@@ -115,7 +115,8 @@ body {
 .price-box.msrp .value { color: var(--light); font-size: 28px; }
 
 /* SECTIONS */
-.section { max-width: 1120px; margin: 0 auto; padding: 76px 24px; counter-increment: section; }
+.section { max-width: 1120px; margin: 0 auto; padding: 72px 24px; counter-increment: section; }
+.section + .section { border-top: 1px solid rgba(255,255,255,.035); }
 .section-title {
   font-family: 'Oswald', sans-serif;
   font-size: clamp(32px, 5vw, 52px);
@@ -140,15 +141,18 @@ body {
 /* STATS GRID */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 .stat-card {
   background: linear-gradient(145deg, var(--surface-raised), #0f0f0f);
   border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 32px 20px;
+  min-height: 156px;
+  padding: 30px 20px;
   text-align: center;
+  display: grid;
+  place-content: center;
   transition: transform 0.2s;
 }
 .stat-card:hover { transform: translateY(-4px); border-color: var(--red); }
@@ -166,13 +170,13 @@ body {
 .pc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 20px;
 }
 @media (max-width: 700px) { .pc-grid { grid-template-columns: 1fr; } }
 .pc-col {
   background: #111;
   border-radius: 20px;
-  padding: 36px;
+  padding: 32px;
   border: 1px solid #222;
 }
 .pc-col.pros { border-top: 4px solid var(--green); }
@@ -188,7 +192,7 @@ body {
 .pc-col.cons h3 { color: var(--red); }
 .pc-col ul { list-style: none; }
 .pc-col li {
-  padding: 10px 0;
+  padding: 9px 0;
   border-bottom: 1px solid #1e1e1e;
   font-size: 16px;
   line-height: 1.5;
@@ -203,20 +207,20 @@ body {
 /* QUOTES */
 .quotes {
   display: grid;
-  gap: 20px;
+  gap: 14px;
 }
 .quote {
   background: #111;
   border-left: 4px solid var(--red);
   border-radius: 0 16px 16px 0;
-  padding: 24px 28px;
+  padding: 22px 26px;
 }
 .quote .text { font-size: 17px; line-height: 1.6; font-style: italic; color: #d0d0d0; }
 .quote .source { margin-top: 12px; font-size: 13px; color: var(--gray); }
 .quote .source a { color: var(--red); text-decoration: none; }
 
 /* TEMP CURVE */
-.temp-section { background: #0d0d0d; border-radius: 24px; padding: 48px; border: 1px solid #1a1a1a; }
+.temp-section { background: #0d0d0d; border-radius: 24px; padding: 42px; border: 1px solid #1a1a1a; }
 .temp-bar {
   display: flex;
   height: 50px;
@@ -267,7 +271,7 @@ body {
 @media (max-width: 700px) { .bw-grid { grid-template-columns: 1fr; } }
 .bw-card {
   border-radius: 20px;
-  padding: 40px;
+  padding: 34px;
   text-align: center;
 }
 .bw-card.best { background: linear-gradient(135deg, #1b3a2a, #0d1f15); border: 1px solid #2d6a4f; }
@@ -283,13 +287,13 @@ body {
 /* FUN FACTS */
 .facts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
 }
 .fact-card {
   background: linear-gradient(145deg, #1a1a2e, #16213e);
   border-radius: 16px;
-  padding: 28px;
+  padding: 26px;
   border: 1px solid #2a2a4a;
 }
 .fact-card .emoji { font-size: 32px; margin-bottom: 12px; }
@@ -302,7 +306,7 @@ body {
   border-radius: 20px;
   padding: 40px;
   text-align: center;
-  margin: 40px auto;
+  margin: 52px auto;
   max-width: 800px;
 }
 .callout h3 {
@@ -389,7 +393,28 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
 @media (max-width: 700px) {
   .hero { min-height: 500px; padding: 76px 18px 58px; }
   .hero h1 { letter-spacing: -2px; }
-  .section { padding: 60px 18px; }
+  .hero .price-tag { gap: 12px; }
+  .price-box { min-width: 148px; padding: 10px 16px; }
+  .section { padding: 52px 18px; }
+  .section-title { margin-bottom: 30px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stat-card { min-height: 128px; padding: 22px 10px; }
+  .stat-card .number { font-size: 36px; }
+  .stat-card .label { font-size: 10px; letter-spacing: 1.4px; }
+  .temp-section { padding: 24px 16px; border-radius: 18px; }
+  .temp-bar { height: 44px; margin-top: 16px; }
+  .temp-segment { font-size: 10px; }
+  .temp-labels { font-size: 9px; letter-spacing: 0; }
+  .pc-col, .bw-card { padding: 26px 22px; }
+  .quote { padding: 20px; }
+  .quote .text { font-size: 15px; }
+  .facts-grid { grid-template-columns: 1fr; gap: 12px; }
+  .fact-card { padding: 22px; }
+  .callout { margin: 40px 18px; padding: 30px 22px; }
+  .rethink { margin-top: 44px; }
+}
+@media (min-width: 701px) and (max-width: 950px) {
+  .facts-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
@@ -652,6 +677,16 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
       <li>Every section title had identical treatment, so a long page felt repetitive instead of deliberately paced.</li>
       <li>Typography was technically readable but lacked editorial character: loose hierarchy, timid labels, and too much generic gray.</li>
       <li>Cards carried the content, but the page had no visible system tying those cards into one authored story.</li>
+    </ul>
+  </details>
+  <details>
+    <summary>Iteration 2 · Spacing, padding & breathing room</summary>
+    <ul class="critique">
+      <li>The six stat cards broke into an awkward five-plus-one row on desktop and a needlessly tall single column on phones.</li>
+      <li>Section padding was generous but monotonous; every transition had the same oversized pause, making the page feel longer than its content warranted.</li>
+      <li>Card interiors used several unrelated padding values, so edges and text blocks did not line up across modules.</li>
+      <li>The temperature panel and price boxes became cramped at mobile width even while other sections wasted vertical space.</li>
+      <li>The callout ran too close to phone edges, while the owner-mod cards lacked a deliberate responsive grid.</li>
     </ul>
   </details>
 </section>
