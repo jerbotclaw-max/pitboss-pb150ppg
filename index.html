@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pit Boss PB150PPG — The Value King</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;600;800&display=swap');
+:root {
+  --red: #e63946;
+  --red-dark: #c1121f;
+  --black: #0a0a0a;
+  -- charcoal: #1a1a1a;
+  --gold: #ffb703;
+  --green: #52b788;
+  --orange: #fb8500;
+  --gray: #6c757d;
+  --light: #f1faee;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--black);
+  color: var(--light);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #1a0a0a 0%, #2d0a0a 40%, #0a0a0a 100%);
+  text-align: center;
+  padding: 80px 20px 60px;
+  border-bottom: 4px solid var(--red);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 60%);
+  animation: pulse 4s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+.hero-badge {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 20px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.hero h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(48px, 10vw, 96px);
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 0.95;
+  position: relative;
+}
+.hero h1 .red { color: var(--red); }
+.hero .subtitle {
+  font-size: clamp(18px, 3vw, 28px);
+  color: var(--gray);
+  margin-top: 16px;
+  font-weight: 600;
+  position: relative;
+}
+.hero .price-tag {
+  margin-top: 30px;
+  display: inline-flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+}
+.price-box {
+  background: var(--charcoal, #1a1a1a);
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  padding: 12px 28px;
+}
+.price-box .label { font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: 2px; }
+.price-box .value { font-family: 'Oswald', sans-serif; font-size: 36px; font-weight: 700; color: var(--gold); }
+.price-box.msrp { border-color: var(--gray); }
+.price-box.msrp .value { color: var(--light); font-size: 28px; }
+
+/* SECTIONS */
+.section { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
+.section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.section-title .accent { color: var(--red); }
+
+/* STATS GRID */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+.stat-card {
+  background: linear-gradient(145deg, #161616, #0f0f0f);
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 32px 20px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.stat-card:hover { transform: translateY(-4px); border-color: var(--red); }
+.stat-card .number {
+  font-family: 'Oswald', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--red);
+  line-height: 1;
+}
+.stat-card .unit { font-size: 18px; color: var(--gray); }
+.stat-card .label { font-size: 13px; color: var(--gray); text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; }
+
+/* PROS / CONS */
+.pc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 700px) { .pc-grid { grid-template-columns: 1fr; } }
+.pc-col {
+  background: #111;
+  border-radius: 20px;
+  padding: 36px;
+  border: 1px solid #222;
+}
+.pc-col.pros { border-top: 4px solid var(--green); }
+.pc-col.cons { border-top: 4px solid var(--red); }
+.pc-col h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+.pc-col.pros h3 { color: var(--green); }
+.pc-col.cons h3 { color: var(--red); }
+.pc-col ul { list-style: none; }
+.pc-col li {
+  padding: 10px 0;
+  border-bottom: 1px solid #1e1e1e;
+  font-size: 16px;
+  line-height: 1.5;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.pc-col li:last-child { border-bottom: none; }
+.pc-col.pros li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+.pc-col.cons li::before { content: '✗'; color: var(--red); font-weight: 700; flex-shrink: 0; }
+
+/* QUOTES */
+.quotes {
+  display: grid;
+  gap: 20px;
+}
+.quote {
+  background: #111;
+  border-left: 4px solid var(--red);
+  border-radius: 0 16px 16px 0;
+  padding: 24px 28px;
+}
+.quote .text { font-size: 17px; line-height: 1.6; font-style: italic; color: #d0d0d0; }
+.quote .source { margin-top: 12px; font-size: 13px; color: var(--gray); }
+.quote .source a { color: var(--red); text-decoration: none; }
+
+/* TEMP CURVE */
+.temp-section { background: #0d0d0d; border-radius: 24px; padding: 48px; border: 1px solid #1a1a1a; }
+.temp-bar {
+  display: flex;
+  height: 50px;
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 30px 0 16px;
+  border: 2px solid #333;
+}
+.temp-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+}
+.temp-seg-smoke { background: linear-gradient(90deg, #1b4332, #2d6a4f); flex: 2; }
+.temp-seg-low { background: linear-gradient(90deg, #2d6a4f, #74c69d); flex: 2; }
+.temp-seg-mid { background: linear-gradient(90deg, #74c69d, #ffb703); flex: 2; }
+.temp-seg-high { background: linear-gradient(90deg, #ffb703, #fb8500); flex: 1; }
+.temp-seg-sear { background: linear-gradient(90deg, #fb8500, #c1121f); flex: 1; }
+.temp-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.temp-labels span { text-align: center; flex: 1; }
+.temp-note {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #b0b0b0;
+  line-height: 1.5;
+}
+
+/* BEST/WORST */
+.bw-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 700px) { .bw-grid { grid-template-columns: 1fr; } }
+.bw-card {
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+}
+.bw-card.best { background: linear-gradient(135deg, #1b3a2a, #0d1f15); border: 1px solid #2d6a4f; }
+.bw-card.worst { background: linear-gradient(135deg, #3a1b1b, #1f0d0d); border: 1px solid #6e2d2d; }
+.bw-card h3 { font-family: 'Oswald', sans-serif; font-size: 28px; text-transform: uppercase; margin-bottom: 20px; }
+.bw-card.best h3 { color: var(--green); }
+.bw-card.worst h3 { color: var(--red); }
+.bw-card ul { list-style: none; text-align: left; }
+.bw-card li { padding: 8px 0; font-size: 16px; display: flex; gap: 10px; align-items: center; }
+.bw-card.best li::before { content: '🔥'; }
+.bw-card.worst li::before { content: '⚠️'; }
+
+/* FUN FACTS */
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+.fact-card {
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid #2a2a4a;
+}
+.fact-card .emoji { font-size: 32px; margin-bottom: 12px; }
+.fact-card .title { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.fact-card .body { font-size: 15px; color: #a0a0b0; line-height: 1.5; }
+
+/* CALLOUT */
+.callout {
+  background: linear-gradient(135deg, var(--red-dark), #8b0000);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  margin: 40px auto;
+  max-width: 800px;
+}
+.callout h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.callout p { font-size: 18px; opacity: 0.9; }
+
+/* SOURCES */
+.sources {
+  background: #080808;
+  border-top: 1px solid #1a1a1a;
+  padding: 40px 24px;
+  text-align: center;
+}
+.sources h4 { font-family: 'Oswald', sans-serif; font-size: 20px; text-transform: uppercase; color: var(--gray); margin-bottom: 16px; }
+.sources a {
+  display: inline-block;
+  margin: 4px 8px;
+  padding: 6px 14px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+.sources a:hover { color: var(--red); border-color: var(--red); }
+
+footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">💰 Value King</div>
+  <h1>PIT BOSS <span class="red">PB150PPG</span></h1>
+  <div class="subtitle">Tabletop Wood Pellet Grill & Smoker</div>
+  <div class="price-tag">
+    <div class="price-box">
+      <div class="label">Legendary Walmart Deal</div>
+      <div class="value">$138</div>
+    </div>
+    <div class="price-box msrp">
+      <div class="label">Current MSRP</div>
+      <div class="value">$329.99</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="section">
+  <div class="section-title">By The <span class="accent">Numbers</span></div>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="number">256<span class="unit"> sq in</span></div><div class="label">Cooking Area</div></div>
+    <div class="stat-card"><div class="number">7<span class="unit"> lb</span></div><div class="label">Hopper Capacity</div></div>
+    <div class="stat-card"><div class="number">180<span class="unit">°F</span></div><div class="label">Min Temp (Smoke)</div></div>
+    <div class="stat-card"><div class="number">1000<span class="unit">°F</span></div><div class="label">Max Temp (Sear)</div></div>
+    <div class="stat-card"><div class="number">5<span class="unit"> yr</span></div><div class="label">Warranty</div></div>
+    <div class="stat-card"><div class="number">~35<span class="unit"> lb</span></div><div class="label">Weight</div></div>
+  </div>
+</div>
+
+<!-- TEMP CURVE -->
+<div class="section">
+  <div class="section-title">Temp <span class="accent">Range</span></div>
+  <div class="temp-section">
+    <div class="temp-bar">
+      <div class="temp-segment temp-seg-smoke">SMOKE</div>
+      <div class="temp-segment temp-seg-low">LOW</div>
+      <div class="temp-segment temp-seg-mid">GRILL</div>
+      <div class="temp-segment temp-seg-high">HIGH</div>
+      <div class="temp-segment temp-seg-sear">SEAR</div>
+    </div>
+    <div class="temp-labels">
+      <span>180°F</span><span>250°F</span><span>350°F</span><span>500°F</span><span>800°F</span><span>1000°F</span>
+    </div>
+    <div class="temp-note">
+      🌡️ <strong>Real-world temps run 30–50°F cooler than set temp</strong> at grate level, especially at the front of the grill. Owners report setting 350°F and reading ~300°F on a probe at the front grate. This doesn't ruin cooks — the food comes out evenly done — but don't trust the built-in readout for precision.
+    </div>
+  </div>
+</div>
+
+<!-- PROS & CONS -->
+<div class="section">
+  <div class="section-title">The <span class="accent">Good & Bad</span></div>
+  <div class="pc-grid">
+    <div class="pc-col pros">
+      <h3>✓ What Owners Love</h3>
+      <ul>
+        <li>Real hardwood smoke flavor — not gas or electric imitation</li>
+        <li>Truly portable: latch the lid, grab the handles, go</li>
+        <li>Heats up fast and holds temp consistently once settled</li>
+        <li>Cleanup is quick — foil the drip tray and you're done</li>
+        <li>7 lb hopper lasts a full cook (brisket, pork butt, ribs)</li>
+        <li>Porcelain-coated grates — no rust, easy wipe-down</li>
+        <li>Works as a daily driver, not just a tailgate novelty</li>
+        <li>At $138, it's the best price-to-smoke-flavor ratio on the market</li>
+      </ul>
+    </div>
+    <div class="pc-col cons">
+      <h3>✗ What Breaks / Annoys</h3>
+      <ul>
+        <li><strong>Auger jams</strong> — the #1 complaint. Pellets swell in humid storage and clog the feed tube</li>
+        <li><strong>Back-burn up the auger</strong> — fire climbs the tube into the hopper. Scary but fixable</li>
+        <li><strong>Temp swings of ±50°F</strong> — the controller cycles wide, not PID-tight</li>
+        <li><strong>Shallow firebox</strong> — grease pool flare-ups happen, especially with fatty cuts</li>
+        <li><strong>Front-of-grate runs cooler</strong> — uneven heat across the small cook surface</li>
+        <li><strong>Transition zone issue</strong> — set below 350°F then raise above 350°F = erratic behavior for some units</li>
+        <li><strong>Limited capacity</strong> — 256 sq in means 2 racks of ribs max, tight for a crowd</li>
+        <li><strong>No WiFi/Bluetooth</strong> on the base model — set it and forget it means manually watching temps</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTES -->
+<div class="section">
+  <div class="section-title">What <span class="accent">Owners Say</span></div>
+  <div class="quotes">
+    <div class="quote">
+      <div class="text">"It has worked flawlessly for over 12 cooks now... no issues. I love it better than my larger vertical, because it is easier to clean and much more convenient."</div>
+      <div class="source">— GeekChef, <a href="https://www.pitbossforum.com/threads/pit-boss-pb150pps-portable-first-cook-and-impressions.1149/">PitBossForum.com</a></div>
+    </div>
+    <div class="quote">
+      <div class="text">"Got it for $197 after a 10% off coupon code at Lowe's. First cook — chicken came out smokey and juicy, really amazing. Clean up was a snap."</div>
+      <div class="source">— GeekChef, <a href="https://www.pitbossforum.com/threads/pit-boss-pb150pps-portable-first-cook-and-impressions.1149/">PitBossForum.com</a></div>
+    </div>
+    <div class="quote">
+      <div class="text">"My only complaint is that I wish it had just a tad bit more grill space. There's no denying it makes great food though."</div>
+      <div class="source">— r/pelletgrills, <a href="https://www.reddit.com/r/pelletgrills/comments/1cqe615/pit_boss_150/">Reddit</a></div>
+    </div>
+    <div class="quote">
+      <div class="text">"Heats up fast and holds its temperature consistently. Clean up is a breeze. I love the thing overall."</div>
+      <div class="source">— Walmart Customer Review, <a href="https://www.walmart.com/reviews/product/187603912">Walmart.com</a></div>
+    </div>
+    <div class="quote">
+      <div class="text">"Ran for about 10 minutes and then wouldn't build heat anymore. Turns out it's the auger not pushing pellets, ripped it all apart to try and fix."</div>
+      <div class="source">— r/PitBossGrills, <a href="https://www.reddit.com/r/PitBossGrills/comments/1kx2xog/pit_boss_table_top_pos/">Reddit</a></div>
+    </div>
+    <div class="quote">
+      <div class="text">"Every time I fire it up I get a fire in my auger tube and smoke coming out of the pellet hopper." (Portable Pit Boss owner — same auger design)</div>
+      <div class="source">— Smoking Meat USA Facebook Group, <a href="https://www.facebook.com/groups/SmokingMeatUSA/posts/30093307476951359/">Facebook</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- BEST FOR / WORST FOR -->
+<div class="section">
+  <div class="section-title">Best <span class="accent">& Worst</span></div>
+  <div class="bw-grid">
+    <div class="bw-card best">
+      <h3>🔥 Best For</h3>
+      <ul>
+        <li>Tailgating & camping</li>
+        <li>Small patios / apartments with outdoor space</li>
+        <li>2–4 person cooks (ribs, chicken, pork butt)</li>
+        <li>Beginners learning smoke flavor</li>
+        <li>Daily-driver grilling without firing up a full-size rig</li>
+        <li>Anyone who wants real smoke for under $150</li>
+      </ul>
+    </div>
+    <div class="bw-card worst">
+      <h3>⚠️ Worst For</h3>
+      <ul>
+        <li>Large gatherings (6+ people)</li>
+        <li>Precision low-and-slow (brisket needs tighter temp control)</li>
+        <li>Cold weather smoking (small body loses heat fast)</li>
+        <li>Set-and-forget overnight cooks (no WiFi, wide swings)</li>
+        <li>Humid climates (pellets swell → auger jams)</li>
+        <li>People who want app control or remote monitoring</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- COMMON MODS -->
+<div class="section">
+  <div class="section-title">Owner <span class="accent">Mods</span></div>
+  <div class="facts-grid">
+    <div class="fact-card">
+      <div class="emoji">🔩</div>
+      <div class="title">Auger Feed Button</div>
+      <div class="body">Install a relay button to run the auger without the fan/igniter. Lets you clear back-burns without stoking the fire. Most popular mod on the forums.</div>
+    </div>
+    <div class="fact-card">
+      <div class="emoji">🛡️</div>
+      <div class="title">Foil the Drip Tray</div>
+      <div class="body">Heavy-duty foil over the grease pan and firebox bottom. Cuts cleanup from 20 minutes to 2. Nearly every long-term owner does this.</div>
+    </div>
+    <div class="fact-card">
+      <div class="emoji">🌡️</div>
+      <div class="title">Heat Deflector Plate</div>
+      <div class="body">Aftermarket deflector to even out the front-to-back temp gradient. Helps the grate read closer to the set temperature.</div>
+    </div>
+    <div class="fact-card">
+      <div class="emoji">🔌</div>
+      <div class="title">P-Setting Adjust</div>
+      <div class="body">Lower the P-setting (P-4 default → P-2 or P-3) to reduce auger pause time and tighten temp swings in the smoke range.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CALLOUT -->
+<div class="callout">
+  <h3>The $138 King</h3>
+  <p>If you find it under $150, buy it immediately. At MSRP ($330) it's still good value. Three years of ribs, chicken, pork butt, and tailgate burgers — still going strong.</p>
+</div>
+
+<!-- SOURCES -->
+<div class="sources">
+  <h4>Sources & Further Reading</h4>
+  <a href="https://www.pitboss-grills.com/products/portable-tabletop-wood-pellet-grill-pb150ppg">Pit Boss Official</a>
+  <a href="https://www.pitbossforum.com/threads/pit-boss-pb150pps-portable-first-cook-and-impressions.1149/">PitBossForum — Owner Review</a>
+  <a href="https://www.reddit.com/r/PitBossGrills/comments/1kx2xog/pit_boss_table_top_pos/">r/PitBossGrills — Auger Failure</a>
+  <a href="https://www.reddit.com/r/pelletgrills/comments/1cqe615/pit_boss_150/">r/pelletgrills — Owner Impressions</a>
+  <a href="https://www.facebook.com/groups/SmokingMeatUSA/posts/30093307476951359/">Smoking Meat USA — Auger Back-Burn</a>
+  <a href="https://www.pitboss-grills.com/pages/faq">Pit Boss FAQ — P-Settings</a>
+  <a href="https://www.webstaurantstore.com/guide/1049/pit-boss-troubleshooting.html">Pit Boss Troubleshooting Guide</a>
+  <a href="https://www.youtube.com/watch?v=uNwy2-qfnho">YouTube — 3-Year Owner Review</a>
+  <a href="https://www.youtube.com/watch?v=Ac5nDIRevm0">YouTube — Honest Review</a>
+  <a href="https://www.walmart.com/reviews/product/187603912">Walmart Customer Reviews</a>
+</div>
+
+<footer>
+  Infographic generated July 2026 · Data from owner forums, Reddit, and retail reviews<br>
+  Not affiliated with Pit Boss Grills · This is a fan/resource page
+</footer>
+
+</body>
+</html>
