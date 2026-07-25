@@ -10,7 +10,7 @@
   --red: #ff4d5a;
   --red-dark: #c9192a;
   --black: #0b0a09;
-  -- charcoal: #1a1a1a;
+  --charcoal: #1a1a1a;
   --gold: #ffc247;
   --green: #65c997;
   --orange: #fb8500;
@@ -56,7 +56,7 @@ body {
   top: -50%; left: -50%;
   width: 200%; height: 200%;
   background: radial-gradient(circle, rgba(230,57,70,0.08) 0%, transparent 60%);
-  animation: pulse 4s ease-in-out infinite;
+  animation: pulse 7s ease-in-out infinite;
 }
 @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 .hero-badge {
@@ -269,7 +269,7 @@ body {
 .temp-seg-high { background: linear-gradient(90deg, #ffc247, #fb8500); flex: 1; color: #19120a; }
 .temp-seg-sear { background: linear-gradient(90deg, #fb8500, #d51d2e); flex: 1; }
 .temp-labels {
-  display: flex;
+  display: none;
   justify-content: space-between;
   font-size: 12px;
   color: var(--gray);
@@ -338,6 +338,7 @@ body {
   background: linear-gradient(145deg, rgba(255,255,255,.025), transparent 38%);
 }
 .competitor.winner { border-color: #8e681d; border-top: 4px solid var(--gold); }
+.competitor:not(.winner) h3 { color: var(--muted); }
 .competitor h3 {
   min-height: 46px;
   padding-bottom: 16px;
@@ -414,7 +415,7 @@ body {
 }
 .sources a:hover { color: var(--red); border-color: var(--red); }
 
-footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
+footer { text-align: center; padding: 30px; color: #756f67; font-size: 13px; }
 
 /* RETHINK LOG */
 .rethink {
@@ -458,6 +459,12 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
 .rethink summary::-webkit-details-marker { display: none; }
 .rethink summary::after { content: '+'; float: right; color: var(--red); }
 .rethink details[open] summary::after { content: '−'; }
+.rethink summary:hover { background: rgba(255,255,255,.025); }
+.rethink summary:focus-visible,
+.sources a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
 .rethink .critique {
   border-top: 1px solid var(--line);
   padding: 18px 22px 22px 42px;
@@ -467,7 +474,7 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
 
 @media (max-width: 700px) {
   .hero { min-height: 500px; padding: 76px 18px 58px; }
-  .hero h1 { letter-spacing: -2px; }
+  .hero h1 { font-size: clamp(44px, 15vw, 62px); letter-spacing: -2px; }
   .hero .price-tag { gap: 12px; }
   .price-box { min-width: 148px; padding: 10px 16px; }
   .section { padding: 52px 18px; }
@@ -494,6 +501,11 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
 }
 @media (min-width: 701px) and (max-width: 950px) {
   .facts-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero::before { animation: none; }
+  .stat-card { transition: none; }
 }
 </style>
 </head>
@@ -539,9 +551,6 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
       <div class="temp-segment temp-seg-mid">GRILL<small>350–500°F</small></div>
       <div class="temp-segment temp-seg-high">HIGH<small>500–650°F</small></div>
       <div class="temp-segment temp-seg-sear">SEAR<small>650–700°F*</small></div>
-    </div>
-    <div class="temp-labels">
-      <span>180°F</span><span>250°F</span><span>350°F</span><span>500°F</span><span>650°F</span><span>700°F*</span>
     </div>
     <div class="temp-note">
       🌡️ <strong>Real-world temps run 30–50°F cooler than set temp</strong> at grate level, especially at the front of the grill. Owners report setting 350°F and reading ~300°F on a probe at the front grate. This doesn't ruin cooks — the food comes out evenly done — but don't trust the built-in readout for precision.
@@ -678,7 +687,7 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
       <ul style="list-style:none;">
         <li>💰 <strong>$138–$329</strong> · Best price ever</li>
         <li>📏 256 sq in · 7 lb hopper</li>
-        <li>🌡️ 180–700°F real-world (claims 1000°F)</li>
+        <li>🌡️ 180–700°F real-world sear range</li>
         <li>✅ Real hardwood pellet smoke</li>
         <li>✅ Tabletop portable</li>
         <li>✅ Flame broiler (direct flame sear)</li>
@@ -689,7 +698,7 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
       </ul>
     </div>
     <div class="competitor">
-      <h3 style="color:#a0a0b0;">Traeger Ranger</h3>
+      <h3>Traeger Ranger</h3>
       <ul style="list-style:none;">
         <li>💰 <strong>$399</strong></li>
         <li>📏 184 sq in · 8 lb hopper</li>
@@ -704,7 +713,7 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
       </ul>
     </div>
     <div class="competitor">
-      <h3 style="color:#a0a0b0;">Ninja Woodfire OG301</h3>
+      <h3>Ninja Woodfire OG301</h3>
       <ul style="list-style:none;">
         <li>💰 <strong>$349</strong></li>
         <li>📏 140 sq in · electric + pellets</li>
@@ -719,7 +728,7 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
       </ul>
     </div>
     <div class="competitor">
-      <h3 style="color:#a0a0b0;">GMG Davy Crockett</h3>
+      <h3>GMG Davy Crockett</h3>
       <ul style="list-style:none;">
         <li>💰 <strong>$399</strong></li>
         <li>📏 219 sq in · 9 lb hopper</li>
@@ -749,7 +758,7 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
     <h2 id="rethink-title">The Rethink Panel</h2>
     <p>A brutally honest record of what looked weak, what changed, and why the final page is better.</p>
   </div>
-  <details open>
+  <details>
     <summary>Iteration 1 · Visual hierarchy & typography</summary>
     <ul class="critique">
       <li>The original hero looked like a stretched website header, not the opening panel of a designed infographic.</li>
@@ -786,6 +795,16 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
       <li>Positive owner quotes and serious failure reports had identical styling, hiding the change in evidence and tone.</li>
       <li>The shootout reused the pros-and-cons card style, leaving four dense emoji lists with no strong header or verdict zone.</li>
       <li>Price language drifted between $329.99 and a rounded $330; the infographic needed one consistent $329 MSRP.</li>
+    </ul>
+  </details>
+  <details open>
+    <summary>Iteration 5 · Final polish</summary>
+    <ul class="critique">
+      <li>The revised temperature ranges made the detached tick-label row redundant, adding visual noise instead of precision.</li>
+      <li>Competitor headings still relied on one-off inline colors, undermining the shared card system established in the shootout redesign.</li>
+      <li>The phone hero title was slightly oversized at 390px, while the lowest-contrast footer copy was too faint on ordinary displays.</li>
+      <li>Keyboard focus and reduced-motion preferences had not been addressed, leaving the collapsible history less polished than the visual design.</li>
+      <li>The rethink log opened on the oldest pass; the final page should surface the latest diagnosis while keeping the entire five-step history one click away.</li>
     </ul>
   </details>
 </section>
