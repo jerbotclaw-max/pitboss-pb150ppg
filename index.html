@@ -215,6 +215,21 @@ body {
   border-radius: 0 16px 16px 0;
   padding: 22px 26px;
 }
+.quote::before {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.quote.positive::before { content: "Owner win"; }
+.quote.problem::before { content: "Failure report"; color: var(--red); }
+.quote.problem {
+  background: linear-gradient(90deg, #211214, var(--surface));
+  border-left-color: var(--red);
+}
 .quote .text { font-size: 17px; line-height: 1.6; font-style: italic; color: #ddd7cf; }
 .quote .source { margin-top: 12px; font-size: 13px; color: var(--gray); }
 .quote .source a { color: #ff7180; text-decoration: none; }
@@ -223,7 +238,7 @@ body {
 .temp-section { background: var(--surface); border-radius: 24px; padding: 42px; border: 1px solid var(--line); }
 .temp-bar {
   display: flex;
-  height: 50px;
+  min-height: 64px;
   border-radius: 25px;
   overflow: hidden;
   margin: 30px 0 16px;
@@ -237,6 +252,16 @@ body {
   font-weight: 600;
   font-size: 14px;
   color: #fff;
+  flex-direction: column;
+  line-height: 1.1;
+  text-align: center;
+}
+.temp-segment small {
+  display: block;
+  margin-top: 5px;
+  font: 700 10px/1 'Inter', sans-serif;
+  letter-spacing: .02em;
+  opacity: .88;
 }
 .temp-seg-smoke { background: linear-gradient(90deg, #163f2d, #247a51); flex: 2; }
 .temp-seg-low { background: linear-gradient(90deg, #247a51, #65c997); flex: 2; }
@@ -290,6 +315,53 @@ body {
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
 }
+
+/* SHOOTOUT */
+.shootout-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.competitor {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 30px;
+  overflow: hidden;
+}
+.competitor::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(145deg, rgba(255,255,255,.025), transparent 38%);
+}
+.competitor.winner { border-color: #8e681d; border-top: 4px solid var(--gold); }
+.competitor h3 {
+  min-height: 46px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  font-family: 'Oswald', sans-serif;
+  font-size: 23px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+.competitor ul { list-style: none; margin-top: 12px; }
+.competitor li {
+  padding: 7px 0;
+  border-bottom: 1px solid #292622;
+  line-height: 1.45;
+}
+.competitor li:last-child {
+  margin-top: 10px;
+  padding: 14px;
+  border: 0;
+  border-radius: 10px;
+  background: #211f1c;
+  color: var(--ink);
+}
+.competitor.winner li:last-child { background: #2c2311; color: #ffe2a1; }
 .fact-card {
   background: linear-gradient(145deg, #1d1a16, #12110f);
   border-radius: 16px;
@@ -405,9 +477,10 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
   .stat-card .number { font-size: 36px; }
   .stat-card .label { font-size: 10px; letter-spacing: 1.4px; }
   .temp-section { padding: 24px 16px; border-radius: 18px; }
-  .temp-bar { height: 44px; margin-top: 16px; }
-  .temp-segment { font-size: 10px; }
-  .temp-labels { font-size: 9px; letter-spacing: 0; }
+  .temp-bar { min-height: 260px; margin-top: 16px; flex-direction: column; border-radius: 16px; }
+  .temp-segment { min-height: 50px; flex: 1 !important; font-size: 12px; }
+  .temp-segment small { font-size: 9px; }
+  .temp-labels { display: none; }
   .pc-col, .bw-card { padding: 26px 22px; }
   .quote { padding: 20px; }
   .quote .text { font-size: 15px; }
@@ -415,6 +488,9 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
   .fact-card { padding: 22px; }
   .callout { margin: 40px 18px; padding: 30px 22px; }
   .rethink { margin-top: 44px; }
+  .shootout-grid { grid-template-columns: 1fr; gap: 14px; }
+  .competitor { padding: 24px 22px; }
+  .competitor h3 { min-height: 0; }
 }
 @media (min-width: 701px) and (max-width: 950px) {
   .facts-grid { grid-template-columns: repeat(2, 1fr); }
@@ -435,7 +511,7 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
     </div>
     <div class="price-box msrp">
       <div class="label">Current MSRP</div>
-      <div class="value">$329.99</div>
+      <div class="value">$329</div>
     </div>
   </div>
 </div>
@@ -457,12 +533,12 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
 <div class="section">
   <div class="section-title">Temp <span class="accent">Range</span></div>
   <div class="temp-section">
-    <div class="temp-bar">
-      <div class="temp-segment temp-seg-smoke">SMOKE</div>
-      <div class="temp-segment temp-seg-low">LOW</div>
-      <div class="temp-segment temp-seg-mid">GRILL</div>
-      <div class="temp-segment temp-seg-high">HIGH</div>
-      <div class="temp-segment temp-seg-sear">SEAR</div>
+    <div class="temp-bar" role="img" aria-label="Cooking range from 180 degrees smoke to 700 degrees real-world sear">
+      <div class="temp-segment temp-seg-smoke">SMOKE<small>180–250°F</small></div>
+      <div class="temp-segment temp-seg-low">LOW<small>250–350°F</small></div>
+      <div class="temp-segment temp-seg-mid">GRILL<small>350–500°F</small></div>
+      <div class="temp-segment temp-seg-high">HIGH<small>500–650°F</small></div>
+      <div class="temp-segment temp-seg-sear">SEAR<small>650–700°F*</small></div>
     </div>
     <div class="temp-labels">
       <span>180°F</span><span>250°F</span><span>350°F</span><span>500°F</span><span>650°F</span><span>700°F*</span>
@@ -510,27 +586,27 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
 <div class="section">
   <div class="section-title">What <span class="accent">Owners Say</span></div>
   <div class="quotes">
-    <div class="quote">
+    <div class="quote positive">
       <div class="text">"It has worked flawlessly for over 12 cooks now... no issues. I love it better than my larger vertical, because it is easier to clean and much more convenient."</div>
       <div class="source">— GeekChef, <a href="https://www.pitbossforum.com/threads/pit-boss-pb150pps-portable-first-cook-and-impressions.1149/">PitBossForum.com</a></div>
     </div>
-    <div class="quote">
+    <div class="quote positive">
       <div class="text">"Got it for $197 after a 10% off coupon code at Lowe's. First cook — chicken came out smokey and juicy, really amazing. Clean up was a snap."</div>
       <div class="source">— GeekChef, <a href="https://www.pitbossforum.com/threads/pit-boss-pb150pps-portable-first-cook-and-impressions.1149/">PitBossForum.com</a></div>
     </div>
-    <div class="quote">
+    <div class="quote positive">
       <div class="text">"My only complaint is that I wish it had just a tad bit more grill space. There's no denying it makes great food though."</div>
       <div class="source">— r/pelletgrills, <a href="https://www.reddit.com/r/pelletgrills/comments/1cqe615/pit_boss_150/">Reddit</a></div>
     </div>
-    <div class="quote">
+    <div class="quote positive">
       <div class="text">"Heats up fast and holds its temperature consistently. Clean up is a breeze. I love the thing overall."</div>
       <div class="source">— Walmart Customer Review, <a href="https://www.walmart.com/reviews/product/187603912">Walmart.com</a></div>
     </div>
-    <div class="quote">
+    <div class="quote problem">
       <div class="text">"Ran for about 10 minutes and then wouldn't build heat anymore. Turns out it's the auger not pushing pellets, ripped it all apart to try and fix."</div>
       <div class="source">— r/PitBossGrills, <a href="https://www.reddit.com/r/PitBossGrills/comments/1kx2xog/pit_boss_table_top_pos/">Reddit</a></div>
     </div>
-    <div class="quote">
+    <div class="quote problem">
       <div class="text">"Every time I fire it up I get a fire in my auger tube and smoke coming out of the pellet hopper." (Portable Pit Boss owner — same auger design)</div>
       <div class="source">— Smoking Meat USA Facebook Group, <a href="https://www.facebook.com/groups/SmokingMeatUSA/posts/30093307476951359/">Facebook</a></div>
     </div>
@@ -596,11 +672,11 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
 <!-- SHOOTOUT -->
 <div class="section">
   <div class="section-title">The <span class="accent">Shootout</span></div>
-  <div class="pc-grid">
-    <div class="pc-col" style="border-top:4px solid var(--gold);">
+  <div class="shootout-grid">
+    <div class="competitor winner">
       <h3 style="color:var(--gold);">🏆 Pit Boss PB150PPG</h3>
       <ul style="list-style:none;">
-        <li>💰 <strong>$138–$330</strong> · Best price ever</li>
+        <li>💰 <strong>$138–$329</strong> · Best price ever</li>
         <li>📏 256 sq in · 7 lb hopper</li>
         <li>🌡️ 180–700°F real-world (claims 1000°F)</li>
         <li>✅ Real hardwood pellet smoke</li>
@@ -612,7 +688,7 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
         <li><strong>Verdict: The people's champion. Most smoke per dollar.</strong></li>
       </ul>
     </div>
-    <div class="pc-col">
+    <div class="competitor">
       <h3 style="color:#a0a0b0;">Traeger Ranger</h3>
       <ul style="list-style:none;">
         <li>💰 <strong>$399</strong></li>
@@ -627,7 +703,7 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
         <li><strong>Verdict: Smarter tech, dumber price. No sear = no deal.</strong></li>
       </ul>
     </div>
-    <div class="pc-col">
+    <div class="competitor">
       <h3 style="color:#a0a0b0;">Ninja Woodfire OG301</h3>
       <ul style="list-style:none;">
         <li>💰 <strong>$349</strong></li>
@@ -642,7 +718,7 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
         <li><strong>Verdict: Great gadget, weak smoker. It's an air fryer that whispers smoke.</strong></li>
       </ul>
     </div>
-    <div class="pc-col">
+    <div class="competitor">
       <h3 style="color:#a0a0b0;">GMG Davy Crockett</h3>
       <ul style="list-style:none;">
         <li>💰 <strong>$399</strong></li>
@@ -663,7 +739,7 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
 <!-- CALLOUT -->
 <div class="callout">
   <h3>The $138 King</h3>
-  <p>If you find it under $150, buy it immediately. At MSRP ($330) it's still good value. Three years of ribs, chicken, pork butt, and tailgate burgers — still going strong.</p>
+  <p>If you find it under $150, buy it immediately. At MSRP ($329) it's still good value. Three years of ribs, chicken, pork butt, and tailgate burgers — still going strong.</p>
 </div>
 
 <!-- RETHINK LOG -->
@@ -700,6 +776,16 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
       <li>Several card surfaces differed by only a few RGB values, so the page read as a dark blob on lower-brightness displays.</li>
       <li>The original red was muddy against black, while the temperature gradient needed dark text through its bright middle zones.</li>
       <li>The closing callout was loud but flat; it needed a crisp edge and controlled glow to feel intentional rather than default-red.</li>
+    </ul>
+  </details>
+  <details>
+    <summary>Iteration 4 · Information design</summary>
+    <ul class="critique">
+      <li>The temperature bar named five modes but forced readers to map them to six detached labels; the ranges were visually ambiguous.</li>
+      <li>On phones, that same bar compressed into a nearly illegible rainbow strip instead of communicating a cooking progression.</li>
+      <li>Positive owner quotes and serious failure reports had identical styling, hiding the change in evidence and tone.</li>
+      <li>The shootout reused the pros-and-cons card style, leaving four dense emoji lists with no strong header or verdict zone.</li>
+      <li>Price language drifted between $329.99 and a rounded $330; the infographic needed one consistent $329 MSRP.</li>
     </ul>
   </details>
 </section>
