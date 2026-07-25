@@ -7,20 +7,20 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;600;800&display=swap');
 :root {
-  --red: #e63946;
-  --red-dark: #c1121f;
-  --black: #0a0a0a;
+  --red: #ff4d5a;
+  --red-dark: #c9192a;
+  --black: #0b0a09;
   -- charcoal: #1a1a1a;
-  --gold: #ffb703;
-  --green: #52b788;
+  --gold: #ffc247;
+  --green: #65c997;
   --orange: #fb8500;
-  --gray: #6c757d;
+  --gray: #aaa39a;
   --light: #f1faee;
   --ink: #f7f3eb;
-  --muted: #aaa39a;
-  --surface: #121212;
-  --surface-raised: #181818;
-  --line: #2a2927;
+  --muted: #b7b0a6;
+  --surface: #141311;
+  --surface-raised: #1b1917;
+  --line: #35312d;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
@@ -42,7 +42,7 @@ body {
   background:
     linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
-    linear-gradient(135deg, #1a0a0a 0%, #2d0a0a 40%, #0a0a0a 100%);
+    linear-gradient(135deg, #1d0c0d 0%, #3a0e13 42%, #0b0a09 100%);
   background-size: 44px 44px, 44px 44px, auto;
   text-align: center;
   padding: 96px 24px 76px;
@@ -103,7 +103,7 @@ body {
 }
 .price-box {
   min-width: 190px;
-  background: rgba(18,18,18,.88);
+  background: rgba(20,19,17,.92);
   backdrop-filter: blur(8px);
   border: 2px solid var(--gold);
   border-radius: 12px;
@@ -145,7 +145,7 @@ body {
   gap: 18px;
 }
 .stat-card {
-  background: linear-gradient(145deg, var(--surface-raised), #0f0f0f);
+  background: linear-gradient(145deg, var(--surface-raised), #11100f);
   border: 1px solid var(--line);
   border-radius: 16px;
   min-height: 156px;
@@ -174,7 +174,7 @@ body {
 }
 @media (max-width: 700px) { .pc-grid { grid-template-columns: 1fr; } }
 .pc-col {
-  background: #111;
+  background: var(--surface);
   border-radius: 20px;
   padding: 32px;
   border: 1px solid #222;
@@ -193,7 +193,7 @@ body {
 .pc-col ul { list-style: none; }
 .pc-col li {
   padding: 9px 0;
-  border-bottom: 1px solid #1e1e1e;
+  border-bottom: 1px solid #292622;
   font-size: 16px;
   line-height: 1.5;
   display: flex;
@@ -210,17 +210,17 @@ body {
   gap: 14px;
 }
 .quote {
-  background: #111;
+  background: linear-gradient(90deg, #191614, var(--surface));
   border-left: 4px solid var(--red);
   border-radius: 0 16px 16px 0;
   padding: 22px 26px;
 }
-.quote .text { font-size: 17px; line-height: 1.6; font-style: italic; color: #d0d0d0; }
+.quote .text { font-size: 17px; line-height: 1.6; font-style: italic; color: #ddd7cf; }
 .quote .source { margin-top: 12px; font-size: 13px; color: var(--gray); }
-.quote .source a { color: var(--red); text-decoration: none; }
+.quote .source a { color: #ff7180; text-decoration: none; }
 
 /* TEMP CURVE */
-.temp-section { background: #0d0d0d; border-radius: 24px; padding: 42px; border: 1px solid #1a1a1a; }
+.temp-section { background: var(--surface); border-radius: 24px; padding: 42px; border: 1px solid var(--line); }
 .temp-bar {
   display: flex;
   height: 50px;
@@ -238,11 +238,11 @@ body {
   font-size: 14px;
   color: #fff;
 }
-.temp-seg-smoke { background: linear-gradient(90deg, #1b4332, #2d6a4f); flex: 2; }
-.temp-seg-low { background: linear-gradient(90deg, #2d6a4f, #74c69d); flex: 2; }
-.temp-seg-mid { background: linear-gradient(90deg, #74c69d, #ffb703); flex: 2; }
-.temp-seg-high { background: linear-gradient(90deg, #ffb703, #fb8500); flex: 1; }
-.temp-seg-sear { background: linear-gradient(90deg, #fb8500, #c1121f); flex: 1; }
+.temp-seg-smoke { background: linear-gradient(90deg, #163f2d, #247a51); flex: 2; }
+.temp-seg-low { background: linear-gradient(90deg, #247a51, #65c997); flex: 2; }
+.temp-seg-mid { background: linear-gradient(90deg, #65c997, #ffc247); flex: 2; color: #19120a; }
+.temp-seg-high { background: linear-gradient(90deg, #ffc247, #fb8500); flex: 1; color: #19120a; }
+.temp-seg-sear { background: linear-gradient(90deg, #fb8500, #d51d2e); flex: 1; }
 .temp-labels {
   display: flex;
   justify-content: space-between;
@@ -255,10 +255,10 @@ body {
 .temp-note {
   margin-top: 24px;
   padding: 16px 20px;
-  background: #1a1a1a;
+  background: #211f1c;
   border-radius: 12px;
   font-size: 15px;
-  color: #b0b0b0;
+  color: #cbc4ba;
   line-height: 1.5;
 }
 
@@ -274,8 +274,8 @@ body {
   padding: 34px;
   text-align: center;
 }
-.bw-card.best { background: linear-gradient(135deg, #1b3a2a, #0d1f15); border: 1px solid #2d6a4f; }
-.bw-card.worst { background: linear-gradient(135deg, #3a1b1b, #1f0d0d); border: 1px solid #6e2d2d; }
+.bw-card.best { background: linear-gradient(135deg, #183526, #101a14); border: 1px solid #347957; }
+.bw-card.worst { background: linear-gradient(135deg, #391719, #1d1010); border: 1px solid #83333b; }
 .bw-card h3 { font-family: 'Oswald', sans-serif; font-size: 28px; text-transform: uppercase; margin-bottom: 20px; }
 .bw-card.best h3 { color: var(--green); }
 .bw-card.worst h3 { color: var(--red); }
@@ -291,18 +291,21 @@ body {
   gap: 18px;
 }
 .fact-card {
-  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  background: linear-gradient(145deg, #1d1a16, #12110f);
   border-radius: 16px;
   padding: 26px;
-  border: 1px solid #2a2a4a;
+  border: 1px solid #3b3329;
+  border-top: 3px solid var(--gold);
 }
 .fact-card .emoji { font-size: 32px; margin-bottom: 12px; }
 .fact-card .title { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 8px; }
-.fact-card .body { font-size: 15px; color: #a0a0b0; line-height: 1.5; }
+.fact-card .body { font-size: 15px; color: var(--muted); line-height: 1.5; }
 
 /* CALLOUT */
 .callout {
-  background: linear-gradient(135deg, var(--red-dark), #8b0000);
+  background: linear-gradient(135deg, #d31e31, #7f0711);
+  border: 1px solid #ff5966;
+  box-shadow: 0 20px 60px rgba(175, 12, 27, .22);
   border-radius: 20px;
   padding: 40px;
   text-align: center;
@@ -329,8 +332,8 @@ body {
   display: inline-block;
   margin: 4px 8px;
   padding: 6px 14px;
-  background: #111;
-  border: 1px solid #222;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--gray);
   text-decoration: none;
@@ -687,6 +690,16 @@ footer { text-align: center; padding: 30px; color: #333; font-size: 13px; }
       <li>Card interiors used several unrelated padding values, so edges and text blocks did not line up across modules.</li>
       <li>The temperature panel and price boxes became cramped at mobile width even while other sections wasted vertical space.</li>
       <li>The callout ran too close to phone edges, while the owner-mod cards lacked a deliberate responsive grid.</li>
+    </ul>
+  </details>
+  <details>
+    <summary>Iteration 3 · Color & contrast</summary>
+    <ul class="critique">
+      <li>The navy owner-mod cards were visually competent but completely outside the red, black, gold, and smoke palette.</li>
+      <li>Muted labels and source lines sat too close to the background contrast threshold, especially at their small sizes.</li>
+      <li>Several card surfaces differed by only a few RGB values, so the page read as a dark blob on lower-brightness displays.</li>
+      <li>The original red was muddy against black, while the temperature gradient needed dark text through its bright middle zones.</li>
+      <li>The closing callout was loud but flat; it needed a crisp edge and controlled glow to feel intentional rather than default-red.</li>
     </ul>
   </details>
 </section>
